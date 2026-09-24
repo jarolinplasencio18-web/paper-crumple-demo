@@ -71,10 +71,10 @@ wall.visible = false;
 scene.add(wall);
 
 // ライト
-const ambient = new THREE.AmbientLight(0xffffff, 1.25);
+const ambient = new THREE.AmbientLight(0xffffff, 1.4);
 scene.add(ambient);
 
-const dirLight = new THREE.DirectionalLight(0xffffff, 1.15);
+const dirLight = new THREE.DirectionalLight(0xffffff, 1.25);
 dirLight.position.set(-2, 2.6, 1.4);
 dirLight.castShadow = true;
 dirLight.shadow.mapSize.set(2048, 2048);
@@ -285,7 +285,7 @@ const PAPER_OFFSETS = [
 
 // 開いた紙: カメラ正面 OPEN_DISTANCE 先に、画面高さの90%で正対表示する
 // (ステージ上のどの紙玉よりもカメラに近い距離にして、必ず最前面に見えるようにする)
-const OPEN_SCREEN_RATIO = 0.9;
+const OPEN_SCREEN_RATIO = 0.96;
 const OPEN_DISTANCE = 1.5;
 const CLOSED_SCALE = 0.82;
 
