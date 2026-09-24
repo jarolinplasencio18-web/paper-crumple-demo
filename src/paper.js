@@ -12,7 +12,7 @@ const designStates = [];
 
 function drawImageCover(ctx, image, texture, canvas) {
   if (!image.complete || !image.naturalWidth) return;
-  const scale = Math.max(canvas.width / image.naturalWidth, canvas.height / image.naturalHeight);
+  const scale = Math.min(canvas.width / image.naturalWidth, canvas.height / image.naturalHeight);
   const width = image.naturalWidth * scale;
   const height = image.naturalHeight * scale;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
