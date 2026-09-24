@@ -21,7 +21,7 @@ const colorSettings = {
   background: "#ff3838", // 背面の壁と背景
   floor: "#dcdad0",
 };
-scene.background = new THREE.Color(colorSettings.background);
+scene.background = null;
 
 // カメラ — 斜め前方から見る (GUI で調整できる)
 const cameraSettings = { x: 0, y: 2.2, z: 3.6, targetY: 0.35 };
@@ -40,7 +40,8 @@ function applyCameraSettings() {
   updateOpenPose();
 }
 
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setClearColor(0x000000, 0);
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -57,6 +58,7 @@ const floor = new THREE.Mesh(new THREE.PlaneGeometry(16, 12), floorMat);
 floor.rotation.x = -Math.PI / 2;
 floor.position.set(0, FLOOR_VISUAL_Y, 1);
 floor.receiveShadow = true;
+floor.visible = false;
 scene.add(floor);
 
 const wallMat = new THREE.MeshStandardMaterial({
@@ -65,6 +67,7 @@ const wallMat = new THREE.MeshStandardMaterial({
 const wall = new THREE.Mesh(new THREE.PlaneGeometry(16, 6), wallMat);
 wall.position.set(0, FLOOR_VISUAL_Y + 3, WALL_Z);
 wall.receiveShadow = true;
+wall.visible = false;
 scene.add(wall);
 
 // ライト
